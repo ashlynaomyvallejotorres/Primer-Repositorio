@@ -1,0 +1,61 @@
+# Vallejo Torres Ashly Naomy 
+# 3°B Programacion T.M
+
+# Importamos la biblioteca tkinter, que permite crear interfaces graficas de Python.
+import tkinter as tk
+from tkinter import messagebox
+from unittest import result # messagebox sirve para mostrar cuadros de dialogo (alertas, errores,etc.)
+
+#FUNCIONES PRINCIPALES
+
+# Funcion para calcular el IVA (Impuestos al Valor Agregado 16%)
+def calcular_iva():
+    try:
+        # Obtenemos el valor que el usuario escrito en la caja de texto
+        cantidad = float(entrada = cantidad.get()) # Convertimos el texto a nuero decimal
+
+        # Calculamos el 16% de IVA 
+        iva = cantidad *0.16
+
+        # Mostramos el resultado en la etiqueta de resultados
+        etiqueta = result.config(text=f"IVA (16%): ${iva:.2f}")
+
+    # Si el usuario no ingresa un numero, mostramos un mensaje de error 
+    except ValueError:
+        messagebox.showerror("Error", "Por favor ingrese una cantidad valida.")
+
+# Funcion para calcular el 10% de descuento
+def calcular_descuento():
+    try:
+        # Obtenemos el valor ingresado por el usuario 
+        cantidad = float(entrada = cantidad.get())
+
+        # Calculamos IVA y descuento 
+        iva = cantidad * 0.10
+
+        # Total = cantidad original + IVA - descuento 
+        total = cantidad + iva - descuento # type: ignore
+
+        # Mostramos el total en pantalla
+        etiqueta = result.config(text=f"Total a pagar: ${total:.2f}")
+    
+    except ValueError:
+        messagebox.showerror("Error", "Por favor ingresa una cantidad valida.")
+
+
+
+# INTERFAZ GRAFICA DE LA VENTANA PRINCIPAL 
+
+# Creamos la ventana principal
+ventana = tk.Tk() # Inicia la aplicacion grafica 
+ventana.title("Calcular IVA y Descuento") # Titul de la ventana 
+ventana.geometry("300x250") # Tamaño (ancho x alto)
+ventana.resizable(False, False) # Evita que el usuario cambie el tamaño de la ventana
+
+# ETIQUETA Y CAJA DE TEXTO
+
+# Creamos una etiqueta que indica que de bebe escribir el usuario
+etiqueta_cantidad = tk.Label(ventana, text = "Ingresa la antidad:")
+etiqueta_cantidad.pack(pady=10) # .pack() coloca el elemento y pady da un margen vertical 
+
+ventana.mainloop()
